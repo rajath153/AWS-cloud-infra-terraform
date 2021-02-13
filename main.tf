@@ -1,7 +1,7 @@
 
 #Create a VPC Network
 resource "aws_vpc" "my_vpc" {
-  cidr_block       = var.cidr_range
+  cidr_block       = element(var.my_cidr_blocks["vpc-a_cidr_block"],0)
   instance_tenancy = "default"
   tags = var.vpc_tag
 }
@@ -19,7 +19,7 @@ resource "aws_route_table" "internet-route" {
   vpc_id = aws_vpc.my_vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = element(var.my_cidr_blocks["allow_all_cidr_block"],0)
     gateway_id = aws_internet_gateway.in_gw.id
   }
 
@@ -30,17 +30,17 @@ resource "aws_route_table" "internet-route" {
 
 #Adding subnets to my_vpc
 resource "aws_subnet" "my_subnets" {
-  count = length(var.subnet_cidr)
+  count = length(var.my_cidr_blocks["subnet_cidr_block"])
   vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = element(var.subnet_cidr,count.index)
+  cidr_block = element(var.my_cidr_blocks["subnet_cidr_block"],count.index)
   tags = {
-    Name="subnet- ${count.index+1}"
+    Name="subnet-${count.index+1}"
   }
 }
 
 #Route Table Association with the subnet
 resource "aws_route_table_association" "associate" {
-  count = length(var.subnet_cidr)
+  count = length(var.my_cidr_blocks["subnet_cidr_block"])
   subnet_id = element(aws_subnet.my_subnets.*.id,count.index)
   route_table_id = aws_route_table.internet-route.id
 }
@@ -53,42 +53,42 @@ resource "aws_security_group" "my-sg" {
 
   ingress {
     description = "Allow ssh"
-    from_port   = 22
-    to_port     = 22
+    from_port   = var.ports["ssh"]
+    to_port     = var.ports["ssh"]
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.my_cidr_blocks["allow_all_cidr_block"]
   }
 
   ingress {
     description = "Allow icmp"
-    from_port   = -1
-    to_port     = -1
+    from_port   = var.ports["icmp"]
+    to_port     = var.ports["icmp"]
     protocol    = "icmp"
   }
 
   ingress {
     description = "Allow HTTP"
-    from_port   = 80
-    to_port     = 80
+    from_port   = var.ports["http"]
+    to_port     = var.ports["http"]
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.my_cidr_blocks["allow_all_cidr_block"]
   }
 
 
   ingress {
     description = "Allow HTTPS"
-    from_port   = 443
-    to_port     = 443
+    from_port   = var.ports["https"]
+    to_port     = var.ports["https"]
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.my_cidr_blocks["allow_all_cidr_block"]
   }
 
    egress {
-    description = "All external ports are accessible"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow all ports towards external traffic "
+    from_port   = var.ports["allow_all"]
+    to_port     = var.ports["allow_all"]
+    protocol    = "-1" # Any Protocol
+    cidr_blocks = var.my_cidr_blocks["allow_all_cidr_block"]
   }
 
   tags = {
@@ -133,11 +133,4 @@ resource "aws_instance" "test_instance" {
 
   tags = var.inst_tag
 }
-
-
-
-
-
-
-
 
