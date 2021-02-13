@@ -116,7 +116,7 @@ resource "aws_eip" "elastic_ip" {
 resource "aws_instance" "test_instance" {
   ami           = var.image
   instance_type = var.inst_type
-  key_name = "var.your_key" # your AWS key name to access instance
+  key_name = var.your_key # your AWS key name to access instance
   network_interface {
     device_index = 0
     network_interface_id = aws_network_interface.my_interface.id
