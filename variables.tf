@@ -35,11 +35,11 @@ variable "vpc_tag" {
     }
 }
 
-variable "cidr_range" {
-  type = string
+variable "ports" {
+  type = map(number)
 }
 
-variable "subnet_cidr" {
-  type = list(string)
+variable "my_cidr_blocks" {
+  type = map(any)
 }
 
