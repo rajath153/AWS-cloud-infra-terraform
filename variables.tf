@@ -43,3 +43,7 @@ variable "my_cidr_blocks" {
   type = map(any)
 }
 
+variable "your_key" {
+    type = string
+}
+
