@@ -131,6 +131,7 @@ resource "aws_instance" "test_instance" {
               sudo bash -c 'echo my web server > /var/www/html/index.html'
               EOF
 
-  tags = var.inst_tag
+  tags = var.inst_tag 
+
 }
 
