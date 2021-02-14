@@ -4,14 +4,20 @@ In this project, we will have a simple Apache2 webserver setup in AWS cloud usin
 
 Following are the steps performed:
 
-Step 1: Creation of a VPC Network.
-Step 2: Creation of the Internet Gateway and its routing table.
-Step 3: Addition of public subnets in the VPC.
-Step 4: Associate the routing table created in step 2 to the subnet.
-Step 5: Adding security groups to the VPC.
-Step 6: Creation of network interface for the IP in the public subnet.
-step 7: Allocate AWS elastic IP to the created network interface.
-step 8: Create a webserver using the AWS EC2 instance.
+1. Creation of a VPC Network.
+2. Creation of the Internet Gateway and its routing table.
+3. Addition of public subnets in the VPC.
+4. Associate the routing table created in step 2 to the subnet.
+5. Adding security groups to the VPC.
+6. Creation of network interface for the IP in the public subnet.
+7. Allocate AWS elastic IP to the created network interface.
+8. Create a webserver using the AWS EC2 instance.
+
+1. provider.tf  - conatins AWS provider terraform configuration.
+2. main.tf      - contains resource definition of this project.
+3. variables.tf - contains declaration of variables used by the resources.
+4. aws.tfvars   - contains definition of variables used by the resources.
+
 
 Before executing the code you need to supply your own AWS account's "Access key", "Secret key" and public-key name of your EC2 instance in the "aws.tfvars" file.
 
