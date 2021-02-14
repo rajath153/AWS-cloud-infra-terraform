@@ -15,8 +15,8 @@ Following are the steps performed:
 
 File description:
 
-1. provider.tf  - conatins AWS provider terraform configuration.
-2. main.tf      - contains resource definition of this project.
+1. provider.tf  - contains AWS provider terraform configuration.
+2. main.tf      - contains resource definition of the project.
 3. variables.tf - contains declaration of variables used by the resources.
 4. aws.tfvars   - contains definition of variables used by the resources.
 
