@@ -18,3 +18,4 @@ my_cidr_blocks = {
     subnet_cidr_block = ["10.0.10.0/25","10.0.10.128/25"]
 }
 your_key = "xxx" # Supply your key name to access the AWS instance
+
