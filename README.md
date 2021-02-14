@@ -1,6 +1,6 @@
 # AWS-cloud-infra-terraform
 
-In this project, we will have a simple Ubuntu 20.04 Apache2 webserver setup in AWS cloud using terraform in the "us-east-2" region. At the end of the project, you will display the message "my webserver" by accessing the Public IP address of the instance through your web browser.
+In this project, we will have a simple Ubuntu 20.04 Apache2 webserver setup in AWS cloud using terraform in the "us-east-2" region. At the end of the project, you will display the message "my web server" by accessing the Public IP address of the instance through your web browser.
 
 Following are the steps performed:
 
