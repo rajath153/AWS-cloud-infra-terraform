@@ -13,6 +13,8 @@ Following are the steps performed:
 7. Allocate AWS elastic IP to the created network interface.
 8. Create a webserver using the AWS EC2 instance.
 
+File description:
+
 1. provider.tf  - conatins AWS provider terraform configuration.
 2. main.tf      - contains resource definition of this project.
 3. variables.tf - contains declaration of variables used by the resources.
