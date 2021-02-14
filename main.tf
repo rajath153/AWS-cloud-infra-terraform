@@ -97,7 +97,7 @@ resource "aws_security_group" "my-sg" {
 
 }
 
-#create IP in the subnet-1
+#create Network interface and add IP in the subnet-1 range
 resource "aws_network_interface" "my_interface" {
   subnet_id       = aws_subnet.my_subnets[0].id
   private_ips     = ["10.0.10.10"]
