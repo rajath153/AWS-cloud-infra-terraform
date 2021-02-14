@@ -1,7 +1,7 @@
 inst_tag={
     Name="web-server"
 }
-region = "xxx" # your prefered AWS region
+region = "us-east-2" # your prefered AWS region
 ac_key="xxx"#Supply your AWS Access Key under xxx
 sec_key="xxx"#Supply your AWS secret Key under xxx 
 image="ami-0996d3051b72b5b2c" #Ubuntu Server 20.04 LTS (HVM), SSD Volume Type
