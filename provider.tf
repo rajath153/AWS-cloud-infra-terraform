@@ -1,7 +1,7 @@
 #configure provider
 
 provider "aws" {
-  region = var.region
-  access_key=var.ac_key
-  secret_key=var.sec_key
+  region = var.your_AWS_region
+  access_key=var.your_AWS_account_access_key
+  secret_key=var.your_AWS_account_secret_key
 }
