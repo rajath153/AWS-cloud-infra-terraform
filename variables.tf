@@ -47,8 +47,9 @@ variable "my_cidr_blocks" {
   type = map(any)
 }
 
-variable "your_key" {
-    type = string
+variable "your_Public_key" {
+    description = "Public key to access EC2 instance"
+    type        = string
 }
 
 
