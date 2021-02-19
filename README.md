@@ -2,6 +2,8 @@
 
 In this project, we will have a simple Ubuntu 20.04 LTS Apache2 webserver setup in the AWS cloud using terraform. At the end of the project, you will display the message "my web server" by accessing the Public IP address of the instance through your web browser.
 
+Prerequisite: Install Terraform on your local machine before cloning this repository.
+
 Following are the steps performed:
 
 1. Creation of a VPC Network.
